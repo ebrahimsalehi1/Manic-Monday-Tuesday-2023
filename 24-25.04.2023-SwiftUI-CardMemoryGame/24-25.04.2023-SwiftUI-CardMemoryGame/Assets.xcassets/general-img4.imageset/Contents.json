@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "pramod-tiwari-gn37nMUHREM-unsplash.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "pramod-tiwari-gn37nMUHREM-unsplash@2x.jpg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "pramod-tiwari-gn37nMUHREM-unsplash@3x.jpg",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

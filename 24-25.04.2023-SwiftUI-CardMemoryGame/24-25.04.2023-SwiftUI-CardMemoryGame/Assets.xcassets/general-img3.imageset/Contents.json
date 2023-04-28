@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "marios-gkortsilas-Veid7E22wAw-unsplash.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "marios-gkortsilas-Veid7E22wAw-unsplash@2x.jpg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "marios-gkortsilas-Veid7E22wAw-unsplash@3x.jpg",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "jamie-street-jg6qmUw16j4-unsplash.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "jamie-street-jg6qmUw16j4-unsplash@2x.jpg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "jamie-street-jg6qmUw16j4-unsplash@3x.jpg",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "teslariu-mihai-tJZr5F72eFQ-unsplash.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "teslariu-mihai-tJZr5F72eFQ-unsplash@2x.jpg",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "teslariu-mihai-tJZr5F72eFQ-unsplash@3x.jpg",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
