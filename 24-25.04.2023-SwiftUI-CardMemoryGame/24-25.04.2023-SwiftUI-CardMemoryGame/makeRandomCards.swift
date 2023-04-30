@@ -9,6 +9,9 @@ import Foundation
 
 
 func makeRandomCards(typeImage: String)-> Array<CardStruct>{
+    
+    print(typeImage)
+    
     var cardsInfo: Array<CardStruct> = []
     var i = 0
     var count = 0

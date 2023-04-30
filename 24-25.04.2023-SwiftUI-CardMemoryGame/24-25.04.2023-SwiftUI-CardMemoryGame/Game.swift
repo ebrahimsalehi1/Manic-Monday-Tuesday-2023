@@ -8,61 +8,94 @@
 import SwiftUI
 
 struct Game: View {
-    @State var cardsInfo: Array<CardStruct> = makeRandomCards(typeImage:"animal")
+    @Binding var typeImage: String
+
+    @State var cardsInfo: Array<CardStruct> = []
+    @State var lastFlipped:LastFlippedStruct = LastFlippedStruct(previous: -1, current: -1)
+    @State var isLocked: Bool = false
     
     func onClick(info:CardStruct){
+        
+        if isLocked{
+            return
+        }
+        
+        var foundIndex = -1
         for (index,card) in cardsInfo.enumerated(){
             if card.id==info.id {
                 cardsInfo[index].isFlipped.toggle()
+                foundIndex = index
             }
         }
-        print(info)
+        
+        lastFlipped = LastFlippedStruct(previous: lastFlipped.current, current: foundIndex)
+        
+        if lastFlipped.previous != -1{
+                        
+            if cardsInfo[lastFlipped.previous].order == cardsInfo[lastFlipped.current].order {
+                lastFlipped = LastFlippedStruct(previous: -1, current: -1)
+                return
+            }
+            
+            isLocked = true
+            DispatchQueue.main.asyncAfter(deadline: .now()+2, execute: {
+                
+                cardsInfo[lastFlipped.previous].isFlipped.toggle()
+                cardsInfo[lastFlipped.current].isFlipped.toggle()
+
+                lastFlipped = LastFlippedStruct(previous: -1, current: -1)
+                                    
+                isLocked = false
+            })
+            
+
+        }
+        
     }
     var body: some View {
             
         VStack{
             
-            Button("Change"){
-                print("Change Something ...")
-                cardsInfo[0].image = (cardsInfo[0].image=="general-img1" ? "animal-img1":"general-img1")
+            HStack{
+                if cardsInfo.count > 0 {
+                    ForEach(0..<4){ i in
+                        Card(info:cardsInfo[i],onClick: onClick)
+                        
+                    }
+                }
+
             }
             
             HStack{
-                Card(info:cardsInfo[0],onClick: onClick)
                 
-                Card(info:cardsInfo[1],onClick: onClick)
-                
-                Card(info:cardsInfo[2],onClick: onClick)
-                
-                Card(info:cardsInfo[3],onClick: onClick)
+                if cardsInfo.count > 0 {
+                    ForEach(4..<8){ i in
+                        Card(info:cardsInfo[i],onClick: onClick)
+                    }
+                }
+            
             }
             
             HStack{
-                Card(info:cardsInfo[4],onClick: onClick)
                 
-                Card(info:cardsInfo[5],onClick: onClick)
-                
-                Card(info:cardsInfo[6],onClick: onClick)
-                
-                Card(info:cardsInfo[7],onClick: onClick)
-            }
-            
-            HStack{
-                Card(info:cardsInfo[8],onClick: onClick)
-                
-                Card(info:cardsInfo[9],onClick: onClick)
-                
-                Card(info:cardsInfo[10],onClick: onClick)
-                
-                Card(info:cardsInfo[11],onClick: onClick)
+                if cardsInfo.count > 0{
+                    ForEach(8..<12){ i in
+                        Card(info:cardsInfo[i],onClick: onClick)
+                    }
+                }
+
             }
         }
+        .onAppear(perform: {
+                cardsInfo = makeRandomCards(typeImage:self.typeImage)
+               })
         
     }
+
 }
 
-struct Game_Previews: PreviewProvider {
-    static var previews: some View {
-        Game()
-    }
-}
+//struct Game_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Game(typeImage: typeImage)
+//    }
+//}

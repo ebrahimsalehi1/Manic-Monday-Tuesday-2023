@@ -11,7 +11,7 @@ import SwiftUI
 struct _4_25_04_2023_SwiftUI_CardMemoryGameApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(typeImage:"general")
         }
     }
 }

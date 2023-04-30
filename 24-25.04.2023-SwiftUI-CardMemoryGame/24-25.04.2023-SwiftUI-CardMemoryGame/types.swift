@@ -14,3 +14,9 @@ struct CardStruct{
     var order: Int
     var isFlipped: Bool
 }
+
+
+struct LastFlippedStruct{
+    var previous: Int
+    var current: Int
+}

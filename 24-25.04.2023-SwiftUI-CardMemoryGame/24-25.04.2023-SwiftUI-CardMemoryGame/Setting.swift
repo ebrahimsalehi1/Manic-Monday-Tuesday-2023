@@ -8,26 +8,27 @@
 import SwiftUI
 
 struct Setting: View {
-    @State var typeImage: String
+    @Binding var typeImage: String
+    
     var body: some View {
         
         VStack{
             
-            Text(typeImage).padding(20)
+            Text("You have chosen \(typeImage) category").padding(20)
             
-            Button("General"){
-                typeImage = "General"
+            Button("general"){
+                typeImage = "general"
             }.padding(20)
-            Button("Animals"){
-                typeImage = "Animals"
+            Button("animal"){
+                typeImage = "animal"
             }.padding(20)
         }
 
     }
 }
 
-struct Setting_Previews: PreviewProvider {
-    static var previews: some View {
-        Setting(typeImage:"ssdsd")
-    }
-}
+//struct Setting_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Setting(typeImage:"general")
+//    }
+//}
