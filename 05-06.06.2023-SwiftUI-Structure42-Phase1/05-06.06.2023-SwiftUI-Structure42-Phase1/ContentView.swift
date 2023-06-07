@@ -168,7 +168,7 @@ struct ContentView: View {
 
             cards = vehicleProjects
             
-            print("count cards are \(cards.count)")
+            print("fetching number of records \(cards.count)")
         } catch {
             print("Invalid data \(error)")
             dataVehicleProjects = []
