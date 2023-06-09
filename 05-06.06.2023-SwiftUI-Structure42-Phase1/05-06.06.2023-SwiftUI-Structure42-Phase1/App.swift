@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct AppView: View {
     @State private var searchText = ""
     @State private var searchTimer: Timer? = nil
     @State private var isShowingSortModal = false
@@ -150,6 +150,7 @@ struct ContentView: View {
     
     func performFetchData() async{
         isLoading = true
+        isError = false
         let queryString = makeQueryString(sort: selectedSortOption, order: selectedOrderOption, search: searchText)
         let url = "http://localhost:8080/api/vehicleprojects"+queryString
         print(url)
@@ -159,14 +160,7 @@ struct ContentView: View {
         }
             
         do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-
-            let vehicleProjects = try decoder.decode([VehicleProjectStruct].self, from: data)
-
-            cards = vehicleProjects
+            self.cards = try await getVehicleProjects(url:url)
             
             print("fetching number of records \(cards.count)")
         } catch {
@@ -183,6 +177,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        AppView()
     }
 }

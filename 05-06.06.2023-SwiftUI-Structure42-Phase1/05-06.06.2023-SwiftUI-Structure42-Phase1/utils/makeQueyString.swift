@@ -8,7 +8,7 @@
 import Foundation
 
 func makeQueryString(sort:String,order:String,search:String) -> String{
-    var sortPrefix = order == "Ascending" ? "+" : "-"
+    let sortPrefix = order == "Ascending" ? "+" : "-"
     var sortedValue = ""
     switch(sort){
         case "Project abbreviation":
