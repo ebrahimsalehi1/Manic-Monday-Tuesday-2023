@@ -7,7 +7,16 @@
 
 import Foundation
 
-func getVehicleProjects(url:URL) async throws -> [VehicleProjectStruct]{
+let APP_BACKEND_ENDPOINT="http://localhost:8080/api"
+
+func getVehicleProjects(sort:String,order:String,q:String,search:String) async throws -> [VehicleProjectStruct]{
+    
+    let queryString = makeQueryString(sort: sort, order: order, search: search)
+    guard let url = URL(string: APP_BACKEND_ENDPOINT+"/vehicleprojects"+queryString) else {
+        print("Invlid URL")
+        return []
+    }
+    
     let (data, _) = try await URLSession.shared.data(from: url)
     
     let decoder = JSONDecoder()

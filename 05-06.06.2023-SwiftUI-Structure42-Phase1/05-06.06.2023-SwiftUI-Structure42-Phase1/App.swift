@@ -151,16 +151,9 @@ struct AppView: View {
     func performFetchData() async{
         isLoading = true
         isError = false
-        let queryString = makeQueryString(sort: selectedSortOption, order: selectedOrderOption, search: searchText)
-        let url = "http://localhost:8080/api/vehicleprojects"+queryString
-        print(url)
-        guard let url = URL(string: url) else {
-            print("Invalid URL")
-            return
-        }
             
         do {
-            self.cards = try await getVehicleProjects(url:url)
+            self.cards = try await getVehicleProjects(sort: selectedSortOption, order: selectedOrderOption,q:"", search: searchText)
             
             print("fetching number of records \(cards.count)")
         } catch {
